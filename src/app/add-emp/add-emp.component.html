@@ -1,0 +1,57 @@
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Employee</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Employee Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- form -->
+        <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Employee Name</label>
+            <input type="text" class="form-control" id="exampleInputName" formControlName="name">
+            <div *ngIf="employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched">
+              <div class="text-danger fw-bolder" *ngIf="employeeForm.get('name')?.hasError('required')">Name is required</div>
+              <div class="text-danger fw-bolder" *ngIf="employeeForm.get('name')?.hasError('minlength')">Name must be at least 3 characters</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Employee Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email">
+            <div *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">
+              <div class="text-danger fw-bolder" *ngIf="employeeForm.get('email')?.hasError('required')">Email is required</div>
+              <div class="text-danger fw-bolder" *ngIf="employeeForm.get('email')?.hasError('email')">Invalid email format</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputAddress" class="form-label">Employee Address</label>
+            <textarea class="form-control" id="exampleInputAddress" rows="3" formControlName="address"></textarea>
+            <div *ngIf="employeeForm.get('address')?.invalid && employeeForm.get('address')?.touched">
+              <div class="text-danger fw-bolder" *ngIf="employeeForm.get('address')?.hasError('required')">Address is required</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputContact" class="form-label">Employee Contact No.</label>
+            <input class="form-control" id="exampleInputContact" formControlName="contact">
+            <div *ngIf="employeeForm.get('contact')?.invalid && employeeForm.get('contact')?.touched">
+              <div class="text-danger fw-bolder" *ngIf="employeeForm.get('contact')?.hasError('required')">Contact number is required</div>
+              <div class="text-danger fw-bolder" *ngIf="employeeForm.get('contact')?.hasError('pattern')">Contact must be a 10-digit number</div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid"data-bs-dismiss="modal">Add Employee</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

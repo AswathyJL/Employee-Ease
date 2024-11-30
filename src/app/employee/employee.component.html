@@ -1,0 +1,30 @@
+<div class="container my-5">
+    <div class="d-flex justify-content-between">
+        <h1 class="text-primary-emphasis fs-4 fw-bold">Welcome to Employee Ease!</h1>
+        <app-add-emp></app-add-emp>
+    </div>
+    <div class="mt-4">
+        <table class="table table-success table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Employee Name</th>
+                    <th>Employee Email</th>
+                    <th>Employee Address</th>
+                    <th>Employee Contact No.</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (employee of employees; track $index;let i=$index) {
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{ employee.name }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td>{{ employee.address }}</td>
+                        <td>{{ employee.contact }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<section id="authSection" class="container my-5 px-5">
+    <div class="bg-success-subtle rounded-3 p-4">
+        <div class="d-flex justify-content-center align-items-center border border-success-subtle border-4 rounded">
+            <div class="col-md-6">
+                <img src="assets/images/authImg.png" alt="">
+            </div>
+            <div class="col-md-6 pe-5">
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input name="email" formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      @if (loginForm.get("email")?.errors && loginForm.get("email")?.touched) {
+                        <div class="text-danger fw-bolder">Invalid Email</div>
+                      }
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input name="password" formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+                      @if (loginForm.get("password")?.errors && loginForm.get("password")?.touched) {
+                        <div class="text-danger fw-bolder">Invalid Password</div>
+                      }
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</section>
